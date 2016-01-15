@@ -1,0 +1,9 @@
+{
+  "name": "block-battle-server",
+  "version": "0.0.0001",
+  "description": "block-battle-server",
+  "dependencies": {
+    "express": "^4.13.3",
+    "socket.io": "^1.4.4"
+  }
+}
