@@ -17,8 +17,6 @@ io.on('connection', function(socket) {
     socket.on('keydown', function(obj) {
         console.log("on keydown");
         console.log(obj);
-        // console.log(obj.keyCode);
-        // console.log(obj.Event('keyCode'));
     });
 
     //监听新用户加入
@@ -39,32 +37,33 @@ io.on('connection', function(socket) {
             onlineCount: onlineCount,
             user: obj
         });
-        console.log(obj.username + '加入了聊天室');
+        console.log(obj.username + '加入了游戏');
     });
 
     //监听用户退出
     socket.on('disconnect', function() {
         //将退出的用户从在线列表中删除
-        if (onlineUsers.hasOwnProperty(socket.name)) {
-            //退出用户的信息
-            var obj = {
-                userid: socket.name,
-                username: onlineUsers[socket.name]
-            };
+        // if (onlineUsers.hasOwnProperty(socket.name)) {
+        //     //退出用户的信息
+        //     var obj = {
+        //         userid: socket.name,
+        //         username: onlineUsers[socket.name]
+        //     };
 
-            //删除
-            delete onlineUsers[socket.name];
-            //在线人数-1
-            onlineCount--;
+        //     //删除
+        //     delete onlineUsers[socket.name];
+        //     //在线人数-1
+        //     onlineCount--;
 
-            //向所有客户端广播用户退出
-            io.emit('logout', {
-                onlineUsers: onlineUsers,
-                onlineCount: onlineCount,
-                user: obj
-            });
-            console.log(obj.username + '退出了聊天室');
-        }
+        //     //向所有客户端广播用户退出
+        //     io.emit('logout', {
+        //         onlineUsers: onlineUsers,
+        //         onlineCount: onlineCount,
+        //         user: obj
+        //     });
+        //     console.log(obj.username + '退出了游戏');
+        // }
+        console.log('disconnect');
     });
 
     //监听用户发布聊天内容

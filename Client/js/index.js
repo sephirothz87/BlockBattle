@@ -37,5 +37,10 @@
                 'b': 2
             });
         });
+
+        $("#button3").click(function() {
+            console.log("button3 be clicked");
+            socket.disconnect();
+        });
     });
 })();
