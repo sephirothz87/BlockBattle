@@ -18,26 +18,24 @@
 
 
             $(window).keydown(function(event) {
-            	if(event.keyCode == 37||event.keyCode == 38||event.keyCode == 39||event.keyCode == 40){
-                console.log(event);
-                // socket.emit('keydown', event);
-                socket.emit('keydown',event.keyCode);
-            	}
+                if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
+                    console.log(event);
+                    // socket.emit('keydown', event);
+                    socket.emit('keydown', event.keyCode);
+                }
+            });
+
+            socket.on('message', function(o) {
+                console.log(o);
             });
         });
 
         $("#button2").click(function() {
             console.log("button be clicked");
-
-            socket.emit('keydown', {'a':1,'b':2});
+            socket.emit('keydown', {
+                'a': 1,
+                'b': 2
+            });
         });
-
-
-            // $(window).keydown(function(event) {
-            // 	if(event.keyCode == 37||event.keyCode == 38||event.keyCode == 39||event.keyCode == 40){
-            //     console.log(event);
-            //     // socket.emit('keydown', event);
-            // 	}
-            // });
     });
 })();
