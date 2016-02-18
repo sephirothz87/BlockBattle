@@ -15,6 +15,10 @@
     position: absolute;
 }
 
+.undisplay{
+	display: none;
+}
+
 .block_a{
 	margin-top: 50px;
 	margin-left:50px;

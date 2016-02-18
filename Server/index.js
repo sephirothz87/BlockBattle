@@ -121,5 +121,5 @@ io.on('connection', function(socket) {
 http.listen(3000, function() {
     console.log('listening on *:3000');
 
-    setInterval(myInterval, 5000); //1000为1秒钟
+    setInterval(myInterval, 10); //1000为1秒钟
 });
