@@ -1,5 +1,5 @@
 (function() {
-    console.log("build 0001");
+    // console.log("build 0001");
 
     var socket;
     //在线用户
@@ -11,7 +11,7 @@
 
     $(document).ready(function() {
         $("#button").click(function() {
-            console.log("button be clicked");
+            // console.log("button be clicked");
 
             // this.socket = io.connect('192.168.21.154:3000');
             socket = io.connect('192.168.21.154:3000');
@@ -22,7 +22,7 @@
             // });
 
             var userid = genUid();
-            console.log(userid);
+            // console.log(userid);
             var obj_user = {
                 userid: userid
             };
@@ -30,14 +30,14 @@
 
             $(window).keydown(function(event) {
                 if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
-                    console.log(event);
+                    // console.log(event);
                     // socket.emit('keydown', event);
                     socket.emit('keydown', event.keyCode);
                 }
             });
 
             socket.on('join_game', function(obj) {
-                console.log(obj);
+                // console.log(obj);
                 onlineUsers = obj.onlineUsers;
 
                 var html = "";
@@ -60,7 +60,7 @@
             });
 
             socket.on('exit_game', function(obj) {
-                console.log(obj);
+                // console.log(obj);
                 onlineUsers = obj.onlineUsers;
 
                 var html = "";
@@ -83,12 +83,12 @@
             });
 
             socket.on('message', function(obj) {
-                console.log(obj);
+                // console.log(obj);
 
                 for (user in obj) {
 
-                    console.log(user);
-                    console.log(onlineUsers[user]);
+                    // console.log(user);
+                    // console.log(onlineUsers[user]);
 
                     $("#" + obj[user]['userid']).css({
                         'margin-top': obj[user]['y'] + 'px',
@@ -119,7 +119,7 @@
                 // html += "<div id='id_" + i + "' class='battle_block'></div>";
             }
 
-            console.log(html);
+            // console.log(html);
 
             var csss = [{
                 'margin-top': '50px',
@@ -154,7 +154,7 @@
         });
 
         $("#button3").click(function() {
-            console.log("button3 be clicked");
+            // console.log("button3 be clicked");
             socket.disconnect();
             $("#battle_area").html("");
         });
