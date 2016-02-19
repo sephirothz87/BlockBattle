@@ -5,8 +5,18 @@
     //在线用户
     var onlineUsers = {};
 
+    var pingTimeStart;
+    var pingTimeEnd;
+
     genUid = function() {
         return new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100);
+    }
+
+    ping = function(){
+        pingTimeStart =  new Date();
+        // console.log(pingTimeStart);
+        // console.log(pingTimeStart.getTime());
+        socket.emit('ping','ping');
     }
 
     $(document).ready(function() {
@@ -96,6 +106,17 @@
                     });
                 }
             });
+
+            socket.on('ping',function(obj){
+                pingTimeEnd = new Date();
+                var ping = pingTimeEnd-pingTimeStart;
+                // console.log(pingTimeEnd);
+                // console.log(pingTimeEnd.getTime());
+                // console.log(ping);
+                $("#ping").text("延迟： " + ping + " ms");
+            });
+
+            setInterval(ping, 1000); //1000为1秒钟
         });
 
         $("#button2").click(function() {

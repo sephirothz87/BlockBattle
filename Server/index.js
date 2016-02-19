@@ -110,12 +110,16 @@ io.on('connection', function(socket) {
     });
 
     //监听用户发布聊天内容
-    socket.on('message', function(obj) {
-        //向所有客户端广播发布的消息
-        io.emit('message', obj);
-        // console.log(obj.username + '说：' + obj.content);
-    });
+    // socket.on('message', function(obj) {
+    //     //向所有客户端广播发布的消息
+    //     io.emit('message', obj);
+    //     // console.log(obj.username + '说：' + obj.content);
+    // });
 
+    //延迟测试
+    socket.on('ping', function(obj) {
+        socket.emit('ping',obj);
+    });
 });
 
 http.listen(3000, function() {
